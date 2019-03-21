@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 public class MemberDto implements Serializable {
 	private String id;
-	private String name;
 	private String pwd;
+	private String name;
+	private String gender;
 	private String email;
 	private String phone;
+	private String birth;
 	private String address;
 	private int auth;
 	
@@ -15,13 +17,16 @@ public class MemberDto implements Serializable {
 		
 	}
 
-	public MemberDto(String id, String name, String pwd, String email, String phone, String address, int auth) {
+	public MemberDto(String id, String pwd, String name, String gender, String email, String phone, String birth,
+			String address, int auth) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.pwd = pwd;
+		this.name = name;
+		this.gender = gender;
 		this.email = email;
 		this.phone = phone;
+		this.birth = birth;
 		this.address = address;
 		this.auth = auth;
 	}
@@ -34,6 +39,14 @@ public class MemberDto implements Serializable {
 		this.id = id;
 	}
 
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -42,12 +55,12 @@ public class MemberDto implements Serializable {
 		this.name = name;
 	}
 
-	public String getPwd() {
-		return pwd;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getEmail() {
@@ -64,6 +77,14 @@ public class MemberDto implements Serializable {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
 	public String getAddress() {
@@ -84,7 +105,7 @@ public class MemberDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MemberDto [id=" + id + ", name=" + name + ", pwd=" + pwd + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + ", auth=" + auth + "]";
+		return "MemberDto [id=" + id + ", pwd=" + pwd + ", name=" + name + ", gender=" + gender + ", email=" + email
+				+ ", phone=" + phone + ", birth=" + birth + ", address=" + address + ", auth=" + auth + "]";
 	}
 }

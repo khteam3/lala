@@ -10,7 +10,6 @@ INSERT INTO MEMBER(
     'ojh','오지훈','1111','alecsander@naver.com','01012345678','서울시역삼동삼도빌딩2층',0
 )
   
--- 회원가입(멤버)
 DROP TABLE MEMBER
 CASCADE CONSTRAINTS;
 
@@ -18,6 +17,8 @@ CREATE TABLE MEMBER(
     ID VARCHAR2(50) PRIMARY KEY,    -- 아이디
     NAME VARCHAR2(50) NOT NULL,     -- 이름
     PWD VARCHAR2(50) NOT NULL,      -- 비밀번호
+    BIRTH VARCHAR2(50) NOT NULL,    -- 생일
+    GENDER VARCHAR2(10) NOT NULL,   -- 성별
     EMAIL VARCHAR2(50) NOT NULL,    -- 이메일
     PHONE VARCHAR2(20) NOT NULL,    -- 전화번호
     ADDRESS VARCHAR2(100) NOT NULL, -- 주소

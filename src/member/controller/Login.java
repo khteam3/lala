@@ -38,13 +38,16 @@ public class Login extends HttpServlet {
 		String msg = "";
 		PrintWriter out = resp.getWriter();
 		if(mdto!=null) {
-			req.setAttribute("mdto", mdto);
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			session.setAttribute("login", mdto);
+			session.setMaxInactiveInterval(30*60);
+			//req.setAttribute("mdto", mdto);
+			//req.getRequestDispatcher("index.jsp").forward(req, resp);
+			msg = "<script>alert('로그인에 성공했습니다'); location.href='index.jsp';</script>";
 		}
 		else {
 			msg = "로그인에 실패했습니다";
-			msg = "<script>alert('" + msg + "'); location.href='login.jsp';</script>";
-			out.println(msg);
+			msg = "<script>alert('" + msg + "'); location.href='member/login.jsp';</script>";
 		}
+		out.println(msg);
 	}
 }

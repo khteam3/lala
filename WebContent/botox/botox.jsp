@@ -2,19 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
-
-//if(request.getAttribute("mdto")!=null) {
-	MemberDto mdto = (MemberDto)request.getAttribute("mdto");
-	if(mdto!=null) {
-		session.setAttribute("login", mdto);
-		session.setMaxInactiveInterval(10);
-	}
-//}
-%>
-	
-<%
 //사용자 세션
 Object ologin = session.getAttribute("login");
 MemberDto member = null;
@@ -22,7 +9,7 @@ if(ologin==null) {
 	%>
 	<script type="text/javascript">
 	//alert("세션이 만료됐습니다. 다시 로그인하세요.");
-	//location.href = "login.jsp";
+	//location.href = "../login.jsp";
 	</script>
 	<%
 }
@@ -85,23 +72,22 @@ nav {
 </style>
 <title>라라클리닉 역삼점</title>
 </head>
-
 <body>
 <div class="center">
 <div align="center">
-<img src="./images/lala_logo_264x130.png" onclick="location.href='index.jsp'">
+<img src="../images/lala_logo_264x130.png" onclick="location.href='../index.jsp'">
 </div>
 <div align="right" >
 <%
 if(member==null) {
 	%>
-	<a href="./member/login.jsp">Login</a>&nbsp;&nbsp;&nbsp;
-	<a href="./member/join.jsp">Join</a>
+	<a href="../member/login.jsp">Login</a>&nbsp;&nbsp;&nbsp;
+	<a href="../member/join.jsp">Join</a>
 	<%
 }
 else {
 	%>
-	<a href="Logout">Logout</a>&nbsp;&nbsp;&nbsp;
+	<a href="../Logout">Logout</a>&nbsp;&nbsp;&nbsp;
 	<a href="">MyPage</a>
 	<%
 };
@@ -110,9 +96,9 @@ else {
 <div>
 <nav>
 <ul>
-	<li><a href="./botox/botox.jsp">보톡스</a></li>
-	<li><a href="./skin/laser.jsp">피부 클리닉</a></li>
-	<li><a href="./lifting/lifting.jsp">리프팅</a></li>
+	<li><a href="../botox/botox.jsp">보톡스</a></li>
+	<li><a href="../skin/laser.jsp">피부 클리닉</a></li>
+	<li><a href="../lifting/lifting.jsp">리프팅</a></li>
 	<li class="rightF">
 		<a href=""><font class="font15">병원소개</font></a>
 		<a href=""><font class="font15">상담및예약</font></a>
@@ -124,15 +110,10 @@ else {
 </nav>
 </div>
 
-<div class="main">
-<h1>메 인 화 면</h1>
-<h1>이미지들</h1>
-</div>
+<h1>보톡스/보톡스</h1>
+<a href="../botox/botox.jsp">보톡스</a><br>
+<a href="../botox/filler.jsp">필러</a><br>
+<a href="../botox/outline.jsp">윤곽주사</a>
 
-<div>
-<img src="./images/main_visual_bottom.jpg">
-</div>
-
-</div>
 </body>
 </html>

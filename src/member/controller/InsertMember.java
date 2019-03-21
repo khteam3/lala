@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.dao.MemberDao;
 import member.dao.iMemberDao;
 import member.dto.MemberDto;
+import util.UtilClass;
 
 @WebServlet(urlPatterns="/InsertMember")
 public class InsertMember extends HttpServlet {
@@ -32,13 +33,21 @@ public class InsertMember extends HttpServlet {
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
 		String name = req.getParameter("name");
+		String gender = req.getParameter("gender");
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 		String address = req.getParameter("address");
 		
+		String syear = req.getParameter("year");
+		String smonth = UtilClass.two(req.getParameter("month"));
+		String sday = UtilClass.two(req.getParameter("day"));
+		String birth = syear + smonth + sday;
+		
+		
 		//System.out.println("name: " + name);
 		
-		MemberDto mdto = new MemberDto(id, name, pwd, email, phone, address, 0);
+		MemberDto mdto = new MemberDto(id, pwd, name, gender, email, phone, birth, address, 0);
+		System.out.println(mdto.toString());
 		
 		iMemberDao mdao = MemberDao.getInstance();
 		boolean isS = mdao.insertMember(mdto);

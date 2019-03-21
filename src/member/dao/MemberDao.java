@@ -13,7 +13,7 @@ public class MemberDao implements iMemberDao {
 	private static MemberDao memberDao = new MemberDao();
 	
 	private MemberDao() {
-		
+		DBConnection.initConnect();
 	}
 	
 	public static MemberDao getInstance() {
@@ -24,7 +24,7 @@ public class MemberDao implements iMemberDao {
 	@Override
 	public MemberDto loginCheck(String id, String pwd) {
 		
-		String sql = " SELECT ID,NAME,PWD,EMAIL,PHONE,ADDRESS,AUTH "
+		String sql = " SELECT ID,PWD,NAME,GENDER,EMAIL,PHONE,BIRTH,ADDRESS,AUTH "
 				+ " FROM MEMBER "
 				+ " WHERE ID=? AND PWD=? ";
 		
@@ -51,10 +51,12 @@ public class MemberDao implements iMemberDao {
 			if(rs.next()) {
 				mdto = new MemberDto(
 						rs.getString("ID"),//id,
+						rs.getString("PWD"),//pwd,
 						rs.getString("NAME"),//name, 
-						rs.getString("PWD"),//pwd, 
+						rs.getString("GENDER"),//gender,
 						rs.getString("EMAIL"),//email, 
 						rs.getString("PHONE"),//phone, 
+						rs.getString("BIRTH"),//birth,
 						rs.getString("ADDRESS"),//address, 
 						rs.getInt("AUTH"));//,auth);
 			}
@@ -110,8 +112,8 @@ public class MemberDao implements iMemberDao {
 	public boolean insertMember(MemberDto dto) {
 		
 		String sql = " INSERT INTO MEMBER "
-				+ " (ID,PWD,NAME,EMAIL,PHONE,ADDRESS,AUTH) "
-				+ " VALUES(?,?,?,?,?,?,0) ";
+				+ " (ID,PWD,NAME,GENDER,EMAIL,PHONE,BIRTH,ADDRESS,AUTH) "
+				+ " VALUES(?,?,?,?,?,?,?,?,0) ";
 		
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -128,9 +130,11 @@ public class MemberDao implements iMemberDao {
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPwd());
 			psmt.setString(3, dto.getName());
-			psmt.setString(4, dto.getEmail());
-			psmt.setString(5, dto.getPhone());
-			psmt.setString(6, dto.getAddress());
+			psmt.setString(4, dto.getGender());
+			psmt.setString(5, dto.getEmail());
+			psmt.setString(6, dto.getPhone());
+			psmt.setString(7, dto.getBirth());
+			psmt.setString(8, dto.getAddress());
 			
 			count = psmt.executeUpdate();
 			System.out.println("3/6 insertMember suc");

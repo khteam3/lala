@@ -9,15 +9,8 @@ request.setCharacterEncoding("UTF-8");
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
-<title>login.jsp</title>
-<style type="text/css">
-.center {
-	margin: auto;
-	width: 60%;
-	border: 3px solid #8ac007;
-	padding: 10px;
-}
-</style>
+<title>라라클리닉 역삼점 - 로그인</title>
+
 
 </head>
 <body>
@@ -38,7 +31,7 @@ if( !(msg==null || msg.equals("")) ) {
 %>
 
 <div class="center">
-<form action="Login" method="post" onsubmit="return check()">
+<form action="../Login" method="post" onsubmit="return check()">
 
 <table border="1">
 <tr>
@@ -57,10 +50,11 @@ if( !(msg==null || msg.equals("")) ) {
 <tr>
 	<td colspan="2">
 		<input type="submit" value="로그인">
-		<button type="button" onclick="location.href='join.jsp'">회원가입</button>
 	</td>
 </tr>
 </table>
+<a href="../member/join.jsp">[회원가입]</a>&nbsp;&nbsp;&nbsp;
+<a href="../member/search.jsp">[아이디/비밀번호 찾기]</a>
 
 </form>
 </div>
